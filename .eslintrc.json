@@ -1,40 +1,39 @@
 {
   "env": {
+    "es2020": true,
     "node": true,
-    "es2021": true,
     "jest": true
   },
   "extends": [
-    "plugin:react/recommended",
-    "airbnb",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
     "prettier",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
+    "project": ["./tsconfig.json"],
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "eslint-plugin-import-helpers",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers"],
   "rules": {
     "camelcase": "off",
     "import/no-unresolved": "error",
+    "import/no-named-as-default": 0,
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
         "selector": "interface",
-        "format": [
-          "PascalCase"
-        ],
+        "format": ["PascalCase"],
         "custom": {
           "regex": "^I[A-Z]",
           "match": true
@@ -52,52 +51,34 @@
       "error",
       "ignorePackages",
       {
-        "ts": "never",
-        "tsx": "never"
+        "ts": "never"
       }
     ],
     "import-helpers/order-imports": [
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": [
-          "module",
-          "/^@shared/",
-          [
-            "parent",
-            "sibling",
-            "index"
-          ]
-        ],
+        "groups": ["module", "/^@/", ["parent", "sibling", "index"]],
         "alphabetize": {
           "order": "asc",
           "ignoreCase": true
         }
       }
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/unbound-method": [
+      "off",
       {
-        "devDependencies": [
-          "**/*.spec.js"
-        ]
+        "ignoreStatic": false
       }
     ],
-    "prettier/prettier": "error",
-    "react/jsx-filename-extension": [
-      1,
+    "@typescript-eslint/no-misused-promises": [
+      "off",
       {
-        "extensions": [
-          ".jsx",
-          ".tsx"
-        ]
+        "checksVoidReturn": false
       }
     ],
-    "react/react-in-jsx-scope": "off",
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": [
-      "error"
-    ]
+    "import/no-extraneous-dependencies": "off"
   },
   "settings": {
     "import/resolver": {
