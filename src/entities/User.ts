@@ -1,13 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export interface IUserDTO {
-  username: string;
+  userName: string;
   email: string;
   password: string;
 }
 class User {
   id?: string;
-  username!: string;
+  userName!: string;
   email!: string;
   password!: string;
   createdAt!: Date;
