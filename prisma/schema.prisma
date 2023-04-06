@@ -9,7 +9,7 @@ datasource db {
 
 model User {
   id        String   @id @default(uuid())
-  userName  String   @unique @db.VarChar(20)
+  userName  String    @db.VarChar(20)
   email     String   @unique
   password  String   @db.VarChar(145)
   createdAt DateTime @default(now())
